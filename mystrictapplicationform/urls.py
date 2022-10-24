@@ -19,7 +19,7 @@ from rest_framework.routers import DefaultRouter
 from mystrictapplicationformapp.views import ReferenceViewSet
 
 router = DefaultRouter()
-router.register(r'reference', ReferenceViewSet)
+router.register(r'reference', ReferenceViewSet, basename='reference')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
