@@ -66,4 +66,5 @@ class ViewTestCase(TestCase):
         self.assertEqual(data["last_name"], responseJson["last_name"])
         self.assertEqual(data["purpose"], responseJson["purpose"])
         self.assertEqual(data["quantity"], responseJson["quantity"])
-        self.assertIsNone(responseJson["date_of_changes"])
+        # self.assertIsNone(responseJson["date_of_changes"])
+        self.assertEqual(str(timezone.now().date()), responseJson["date_of_changes"])
