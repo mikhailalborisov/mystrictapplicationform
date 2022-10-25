@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
+from django.utils import timezone
 
 
 class Reference(models.Model):
@@ -26,6 +27,7 @@ class Reference(models.Model):
         verbose_name="Цель выдачи справки",
     )
     quantity = models.PositiveIntegerField(
+        default=1,
         validators=[MaxValueValidator(10)],
         help_text="Введите количество экземпляров справки",
         verbose_name="Количество экземпляров справки",
@@ -38,6 +40,7 @@ class Reference(models.Model):
         blank=True,
     )
     date_of_changes = models.DateField(
+        default=timezone.now().date(),
         help_text="Введите дату изменения",
         verbose_name="Дaтa изменения",
         null=True,

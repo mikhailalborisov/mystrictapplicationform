@@ -27,8 +27,9 @@ class ReferenceSerializer(serializers.ModelSerializer):
 
     def validate_purpose(self, value):
         list_of_reasons = ["нужно", "пожалуйста", "по месту требования"]
+        textstr = "цель должна быть одна из списка системы: " + ", ".join(list_of_reasons)
         if value not in list_of_reasons:
-            raise serializers.ValidationError("цель должна быть одна из списка системы")
+            raise serializers.ValidationError(textstr)
         return value
 
     def update(self, instance, validated_data):
